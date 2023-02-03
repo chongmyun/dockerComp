@@ -1,0 +1,21 @@
+#node 이미지 가져오기(docker hub에 있는 이름)
+FROM node
+
+#실행할 기본 컨테이너 경로
+WORKDIR /app
+
+# 첫번째 경로는 이미지로 복사되어야할 파일 경로
+# 두번째 경로는 컨테이너 내부 경로
+COPY . /app
+
+# 작업 실행
+RUN npm install
+
+# 컨테이너에서 외부로 노출할 포트번호
+EXPOSE 80
+
+# 이미지를 기반으로 컨테이너가 시작될때 실행
+CMD [ "node" ,"server.js"]
+
+
+
