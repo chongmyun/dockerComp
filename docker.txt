@@ -58,6 +58,7 @@ docker run -p 3000:80 -d --rm image_id (--rm:중지될때 자동삭제)
 
 //이미지 검사
 docker image inspect image_id
+docker image prune -a (사용되지않는 이미지 모두 삭제)
 
 //컨테이너에/컨테이너로부터 파일 복사
 docker cp dummy/. 이름:/경로 ( from -> to )
@@ -70,4 +71,16 @@ docker run -p 3000:80 -d --rm --name goalsapp b87815e15f27 (--name :컨테이너
     name : tag 
     name : 여러개의 특정한 이미지 그룹을 만들수 있다 (ex> node)
     tag  : 특정화된 버전을 정의할 수 있다.
-docker build -t goals:latest .
+docker build -t goals:latest . 
+====================================================================================
+//도커허브에 이미지 푸시
+docker tag local-image:tagname new-repo:tagname(이미지 이름변경 해서 복사 from -> to)
+
+0. docker login 
+1. docker build -t 아이디/레포지토리명 .
+2. docker push 아이디/레포지토리명
+** 도커허브에 있는 노드 이미지는 업로드 하지 않고 필요한 코드만 업로드
+
+//도커허브 이미지 풀
+docker pull 아이디/레포지토리명:tag
+ ** docker run 아이디/레포지토리명:tag 로컬에서 도커이미지명을 찾지못하면 레포지토리에 접근해서 가져온다
