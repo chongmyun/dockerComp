@@ -46,3 +46,28 @@ docker logs 이름
 
 //컨테이너 인터렉티브로 실행
 docker run -it id (-i:인터랙티브 상호작용모드 -t: 컨테이너에 터미널 생성)
+
+//컨테이너 삭제하기 (실행중인 컨테이너는 삭제 x)
+docker rm 이름 이름 이름
+
+//이미지 삭제하기 (실행중인 인스턴스된 이미지는 삭제 x)
+docker rmi image_id image_id image_id image_id
+
+//중지될때 컨테이너 자동 삭제
+docker run -p 3000:80 -d --rm image_id (--rm:중지될때 자동삭제)
+
+//이미지 검사
+docker image inspect image_id
+
+//컨테이너에/컨테이너로부터 파일 복사
+docker cp dummy/. 이름:/경로 ( from -> to )
+docker cp 이름:/경로 dummy/
+
+//이미지와 컨테이너에 이름,태그지정
+** 컨터네이 관련 내용
+docker run -p 3000:80 -d --rm --name goalsapp b87815e15f27 (--name :컨테이너이름지정)
+** 이미지 관련 내용
+    name : tag 
+    name : 여러개의 특정한 이미지 그룹을 만들수 있다 (ex> node)
+    tag  : 특정화된 버전을 정의할 수 있다.
+docker build -t goals:latest .

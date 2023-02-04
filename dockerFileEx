@@ -1,5 +1,5 @@
 #node 이미지 가져오기(docker hub에 있는 이름)
-FROM node
+FROM node:14
 
 #실행할 기본 컨테이너 경로
 WORKDIR /app
